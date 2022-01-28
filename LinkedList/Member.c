@@ -1,7 +1,7 @@
 /* 회원 데이터 Memeber(소스부) */
 #include <stdio.h>
 #include <string.h>
-#include "Member.h"
+#include "Member.h"         
 
 /*--- 회원 번호 비교 함수 ---*/
 int MemberNoCmp(const Member *x, const Member *y)

@@ -1,43 +1,51 @@
 #ifndef __LinkedList
 #define __LinkedList
+
 #include "Member.h"
 
-//노드
-typedef struct __Node
-{
+//Nodex
+typedef struct __Node{
+    Member data; //노드 데이터
     struct __Node *next; //다음 노드
-    Member data; //데이터
 }Node;
 
-//리스트
-typedef struct 
-{
-    Node *head; //머리노드에 대한 포인터
+//List
+typedef struct __List{
+    Node *head; //head 노드
     Node *crnt; //현재 노드
 }List;
 
-//head 및 현재 노드 초기화
+//새로운 노드에 멤버값 설정
+static void SetNode(Node *newNode, Member *data, Node *next);
+
+//노드 동적 할당
+static Node *AllocNode();
+
+//노드 초기화
 void Initialize(List *list);
 
-//멤버 선형 검색 함수
-Node *search(List *list, const Member *x, int compare(const Member *x, const Member *y));
+//머리노드 추가
+void InsertFront(List *list, Member *d);
 
-//머리노트 앞에 새로는 노드 생성
-void InsertFront(List *list, const Member *x);
+//꼬리노드 추가
+void InsertRear(List *list, Member *d);
 
-//꼬리노드 뒤에 새로운 노드 생성
-void InsertRear(List *list, const Member *x);
+//임의 위치에 노드 추가
+Node *InsertAnywhere(List *list, int key, Member *d);
 
 //머리노드 삭제
 void RemoveFront(List *list);
 
-//꼬리 노드 삭제
+//꼬리노드 삭제
 void RemoveRear(List *list);
 
-//현재 노드 삭제
+//현재노드 삭제
 void RemoveCurrent(List *list);
 
-//모든 노드 삭제
+//노드 검색
+Node *search(List *list, Member *key, int compare(const Member *x, const Member *y));
+
+//노드 삭제
 void Clear(List *list);
 
 //현재 노드 출력
@@ -53,4 +61,3 @@ void Print(List *list);
 void Terminate(List *list);
 
 #endif
-
