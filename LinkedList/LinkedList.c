@@ -22,10 +22,9 @@ void Initialize(List *list){
 
 //머리노드 추가
 void InsertFront(List *list, Member *d){
-    Node *ptr = list->head; //노드 A를 ptr에 담는다
     list->crnt = AllocNode(); //새로운 노드 B 생성
+    SetNode(list->crnt, d, list->head); //새로운 노드에 멤버값(노드 B, data x) 할당
     list->head = list->crnt; //새로운 노드 B를 head에 담는다
-    SetNode(list->crnt, d, ptr); //새로운 노드에 멤버값(노드 B, data x) 할당
 }
 
 //꼬리노드 추가
@@ -36,7 +35,7 @@ void InsertRear(List *list, Member *d){
         while(ptr->next != NULL){ //꼬리노드 찾기
             ptr = ptr->next;
         }
-        list->crnt = AllocNode();
+        list->crnt = AllocNode(); //새로운 꼬리노드 생성
         ptr->next = list->crnt;
         SetNode(list->crnt, d, NULL);
     }
@@ -48,7 +47,7 @@ Node *InsertAnywhere(List *list, int key, Member *d){
         if(list->head->data.no == key){ //첫번째 노드가 key일 경우
             InsertFront(list,d);
             return list->crnt;
-        }else{ //노드가 2개 이상
+        }else{
             Node *ptr = list->head;
             while(ptr != NULL){
                 if(ptr->next->data.no == key){
