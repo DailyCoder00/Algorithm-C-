@@ -3,7 +3,7 @@
 
 #include "Member.h"
 
-//Nodex
+//Node
 typedef struct __Node{
     Member data; //노드 데이터
     struct __Node *next; //다음 노드
@@ -13,6 +13,7 @@ typedef struct __Node{
 typedef struct __List{
     Node *head; //head 노드
     Node *crnt; //현재 노드
+    int max;
 }List;
 
 //새로운 노드에 멤버값 설정
@@ -56,6 +57,9 @@ void PrintLnCurrent(List *list);
 
 //모든 노드 출력
 void Print(List *list);
+
+//포인터 형태로 출력
+void PrintPointer(List *list);
 
 //LinkedList 종료
 void Terminate(List *list);

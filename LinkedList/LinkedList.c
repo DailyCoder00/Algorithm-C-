@@ -133,7 +133,7 @@ void Clear(List *list){
 //현재 노드 출력
 void PrintCurrent(List* list){
     if(list->crnt == NULL){
-        printf("선택된 노드가 없습니다");
+        printf("선택된 노드가 없습니다.");
     }else{
         PrintMember(&list->crnt->data);
     }
@@ -148,13 +148,26 @@ void PrintLnCurrent(List *list){
 //모든 노드 출력
 void Print(List *list){
     if(list->head == NULL){
-        puts("출력 할 노드가 없습니다");
+        puts("출력 할 노드가 없습니다.");
     }else{
         Node *ptr = list->head;
         while(ptr != NULL){
             PrintLnMember(&ptr->data);
             ptr = ptr->next;
         }
+    }
+}
+
+//포인터 형태로 출력
+void PrintPointer(List *list){
+    Node *ptr = list->head;
+    while(ptr != NULL){
+        printf("노드 주소 : %p\n", ptr);
+        puts("데이터");
+        PrintLnMember(&ptr->data);
+        printf("다음 노드 주소 : %p\n", ptr->next);
+        puts("-------------------------------");
+        ptr = ptr->next;
     }
 }
 

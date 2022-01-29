@@ -34,9 +34,9 @@ int SelectMenu(void)
 
     case 3: //노드 출력
         do{
-            printf("(1) 현재 노드 (2) 모든 노드 : ");
+            printf("(1) 현재 노드 (2) 모든 노드 (3) 포인터 형태 출력: ");
             scanf("%d", &subMenu);
-        }while(subMenu < 1 || subMenu > 2); //잘못 입력한 경우 반복
+        }while(subMenu < 1 || subMenu > 3); //잘못 입력한 경우 반복
         break;
 
     case 4: //노드 검색
@@ -63,7 +63,7 @@ int main(void){
 	do {
 		Member x; //회원 데이터
 		menu = SelectMenu(); //메뉴 선택
-        int key;
+        int insert; //임의로 삽입할 위치
 
 		switch (menu) {
 		case 11: //머리에 노드 삽입
@@ -76,12 +76,12 @@ int main(void){
 			InsertRear(&list, &x);
 			break;
 
-        case 13:
+        case 13: //임의로 노드 삽입
             printf("입력된 번호 앞에 노드가 삽입됩니다.\n");
             printf("번호 입력 : ");
-            scanf("%d", &key);
+            scanf("%d", &insert);
             x = ScanMember("임의위치에 삽입", MEMBER_NO | MEMBER_NAME);
-            if(InsertAnywhere(&list,key,&x) == NULL){
+            if(InsertAnywhere(&list,insert,&x) == NULL){
                 printf("삽입에 실패했습니다.\n");
             }
             break;
@@ -103,11 +103,15 @@ int main(void){
 			break;
 
 		case 31: //선택한 노드의 데이터를 출력
-			PrintCurrent(&list);
+			PrintLnCurrent(&list);
 			break;
 
         case 32: //모든 노드의 데이터를 출력
 			Print(&list);
+			break;
+
+		case 33: //포인터 형태로 출력
+			PrintPointer(&list);
 			break;
 
 		case 41: //번호로 검색
