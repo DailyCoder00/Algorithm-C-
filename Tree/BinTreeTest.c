@@ -4,7 +4,7 @@
 
 /*--- 메뉴 ---*/
 typedef enum {
-	TERMINATE, ADD, REMOVE, SEARCH, PRINT
+	TERMINATE, ADD, REMOVE, SEARCH, PRINT, PRINTREVERSE
 } Menu;
 
 /*--- 메뉴 선택 ---*/
@@ -12,9 +12,9 @@ Menu SelectMenu(void)
 {
 	int ch;
 	do {
-		printf("(1) 삽입 (2) 삭제 (3) 검색 (4) 출력 (0) 종료 : ");
+		printf("(1) 삽입 (2) 삭제 (3) 검색 (4) 출력 (5) 역순 출력 (0) 종료 : ");
 		scanf("%d", &ch);
-	} while (ch < TERMINATE || ch > PRINT);
+	} while (ch < TERMINATE || ch > PRINTREVERSE);
 	return (Menu)ch;
 }
 
@@ -51,6 +51,11 @@ int main(void)
 		case PRINT:
 			puts("【 모든 노드 출력 】");
             PrintTree(root);
+			break;
+
+		case PRINTREVERSE:
+			puts("【 모든 노드 역순 출력 】");
+			PrintReversTree(root);
 			break;
         
         case TERMINATE:

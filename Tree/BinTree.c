@@ -77,7 +77,7 @@ BinNode *Remove(BinNode *parent, const Data *d){
     
     //삭제 대상을 찾는 부분
     if(parent == NULL){
-        printf("%d와 같은 값이 존재하지 않습니다", d->num);
+        printf("%d와 같은 값이 존재하지 않습니다\n", d->num);
         return parent;
 
     }else if((cmp = CompareMember(d, &parent->data)) > 0){
@@ -126,6 +126,15 @@ void PrintTree(BinNode *root){
         PrintTree(root->left);
         PrintLnMember(root);
         PrintTree(root->right);
+    }
+}
+
+//모든 노드 역순 출력
+void PrintReversTree(BinNode *root){
+    if(root != NULL){
+        PrintReversTree(root->right);
+        PrintLnMember(root);
+        PrintReversTree(root->left);
     }
 }
 

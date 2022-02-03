@@ -48,6 +48,9 @@ void PrintLnMember(BinNode *node);
 //모든 노드 출력
 void PrintTree(BinNode *root);
 
+//모든 노드 역순 출력
+void PrintReversTree(BinNode *root);
+
 //모든 노드 삭제
 void Terminate(BinNode *root);
 
